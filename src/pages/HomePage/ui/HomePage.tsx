@@ -3,7 +3,7 @@ import classes from './HomePage.module.scss'
 
 export const HomePage: React.FC = () => {
     return (
-        <div>
+        <div className={classes['home-page']}>
             <Header />
         </div>
     )
