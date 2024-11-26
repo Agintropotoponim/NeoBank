@@ -1,0 +1,29 @@
+@import "../../styles/scss/mixins";
+
+.blue-button {
+    @include flex-center;
+
+    padding: 8px;
+    gap: 8px;
+    background: #003cff;
+    border-radius: 16px;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-feature-settings:
+        "salt" on,
+        "liga" off;
+    color: #ffffff;
+    border: none;
+    transition: 0.3s;
+
+    &_disabled {
+        background: rgba(119, 150, 192, 1);
+    }
+}
+
+.blue-button:hover {
+    background: rgba(119, 150, 192, 1);
+}
