@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import App from "../App";
+import { HomePage } from "../../pages/HomePage/ui/HomePage";
 
 interface IRoute {
     path: string;
@@ -8,5 +8,5 @@ interface IRoute {
 }
 
 export const publicRoutes: IRoute[] = [
-    { path: '/', element: <App />, exact: false },
+    { path: '/', element: <HomePage />, exact: false },
 ];

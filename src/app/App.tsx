@@ -1,16 +1,16 @@
-import 'normalize.css';
-import { BrowserRouter } from 'react-router-dom';
-import '../shared/styles/globals.css';
-import { Header } from '../widgets/Header';
+import 'normalize.css'
 import './App.scss';
+import '../shared/styles/globals.css'
+import { NavBar } from '../entities/NavBar';
+import { BrowserRouter } from 'react-router-dom';
+import { BlueButton } from '../shared/ui/BlueButton/BlueButton';
 import AppRouter from './routers/AppRouter';
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
-
-                <Header />
+                <AppRouter />
             </BrowserRouter>
         </div>
     );
