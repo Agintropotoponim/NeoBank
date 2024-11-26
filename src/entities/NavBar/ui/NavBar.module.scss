@@ -1,0 +1,26 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    flex-wrap: wrap;
+
+    &__item {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.02em;
+        color: rgba(29, 25, 41, 1);
+        text-decoration: none;
+    }
+
+    &__item:hover {
+        color: rgba(178, 163, 95, 1);
+    }
+
+    &__item_active {
+        color: rgba(178, 163, 95, 1);
+    }
+}
