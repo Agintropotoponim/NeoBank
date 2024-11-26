@@ -4,12 +4,13 @@ import '../shared/styles/globals.css'
 import { NavBar } from '../entities/NavBar';
 import { BrowserRouter } from 'react-router-dom';
 import { BlueButton } from '../shared/ui/BlueButton/BlueButton';
+import { Logo } from '../shared/ui/Logo';
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <BlueButton className='home-page__button_size'>Online Bank</BlueButton>
+                <Logo>NeoBank</Logo>
             </BrowserRouter>
         </div>
     );
