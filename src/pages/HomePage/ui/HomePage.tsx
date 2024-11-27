@@ -14,9 +14,7 @@ export const HomePage: React.FC = () => {
             <Header />
             <ChooseCard />
             <FeaturesList />
-            {
-                //<ExchangeRate />
-            }
+            <ExchangeRate />
             <ServiceMap />
             <Feedback />
             <Footer />

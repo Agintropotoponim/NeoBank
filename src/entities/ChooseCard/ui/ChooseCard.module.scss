@@ -4,6 +4,7 @@
     align-items: flex-start;
 
     width: 100%;
+    gap: 10px;
 
     &__title-block {
         font-family: "Ubuntu";
@@ -14,6 +15,14 @@
         color: #1c1c1e;
         width: 610px;
         box-sizing: border-box;
+
+        @media (max-width: 500px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            text-align: center;
+        }
     }
 
     &__cards {
@@ -31,7 +40,7 @@
         height: 50px;
     }
 
-    @media (max-width: 1300px){
+    @media (max-width: 1300px) {
         justify-content: center;
         &__cards {
             justify-content: center;
