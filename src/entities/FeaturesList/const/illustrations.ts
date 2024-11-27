@@ -1,0 +1,1 @@
+export const illustration = require('../assets/feature-list-illustration.svg').default;
