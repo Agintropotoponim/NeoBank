@@ -1,0 +1,107 @@
+.footer {
+    width: 100vw;
+    background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #f4f4f4;
+    display: flex;
+    justify-content: center;
+    min-height: 462px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 1300px;
+
+    &__upper-section {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: fit-content;
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    &__contact-data {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @media (max-width: 500px) {
+            height: fit-content;
+        }
+    }
+
+    &__contact-data-phone {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 147.4%;
+        text-align: center;
+        color: #000000;
+    }
+
+    &__contact-data-email {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 147.4%;
+        text-align: center;
+        letter-spacing: 0.02em;
+        color: #2d3748;
+    }
+
+    &__links {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        height: fit-content;
+        gap: 10px 38px;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__link-item {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 147.4%;
+        text-align: center;
+        letter-spacing: 0.02em;
+        color: #000000;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    &__cookies {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 147.4%;
+        letter-spacing: 0.02em;
+        color: #2d3748;
+
+        @media (max-width: 500px) {
+            height: fit-content;
+            background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #f4f4f4;
+        }
+    }
+
+    &__logo {
+        width: 158.14px;
+
+        @media (max-width: 500px) {
+            width: fit-content;
+        }
+    }
+}
