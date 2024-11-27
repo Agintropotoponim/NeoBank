@@ -18,9 +18,10 @@ header {
     @media (max-width: 1300px) and (min-width: 921px) {
     }
 
-    @media (max-width: 920px) and (min-width: 501px) {
+    @media (max-width: 920px) {
         flex-direction: column;
         align-items: center;
+        height: fit-content;
         gap: 16px;
 
         .nav-bar {
@@ -37,6 +38,7 @@ header {
         flex-direction: column;
         align-items: center;
         gap: 16px;
+        height: fit-content;
 
         .nav-bar {
             flex-wrap: wrap;
