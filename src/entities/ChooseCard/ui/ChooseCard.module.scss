@@ -1,0 +1,50 @@
+.choose-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    &__title-block {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 50px;
+        color: #1c1c1e;
+        width: 610px;
+        box-sizing: border-box;
+    }
+
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        width: 518px;
+        height: 314.78px;
+    }
+
+    &__button {
+        width: 160px;
+        height: 50px;
+    }
+
+    @media (max-width: 1300px) and (min-width: 921px) {
+        outline: 1px solid red;
+        justify-content: center;
+        &__cards {
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 920px) {
+
+    }
+
+    @media (max-width: 500px) {
+        flex-wrap: wrap;
+    }
+}
