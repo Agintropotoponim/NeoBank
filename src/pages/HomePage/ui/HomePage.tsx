@@ -1,5 +1,6 @@
 import { ChooseCard } from '../../../entities/ChooseCard'
 import { FeaturesList } from '../../../entities/FeaturesList'
+import { Feedback } from '../../../entities/Feedback/intex'
 import { ServiceMap } from '../../../entities/ServiceMap/ui/ServiceMap'
 import { ExchangeRate } from '../../../features/ExchangeRate'
 import { CustomInput } from '../../../shared/ui/CustomInput'
@@ -16,6 +17,7 @@ export const HomePage: React.FC = () => {
                 //<ExchangeRate />
             }
             <ServiceMap />
+            <Feedback />
         </div>
     )
 }
