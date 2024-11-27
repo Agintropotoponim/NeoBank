@@ -31,20 +31,25 @@
         height: 50px;
     }
 
-    @media (max-width: 1300px) and (min-width: 921px) {
-        outline: 1px solid red;
+    @media (max-width: 1300px){
         justify-content: center;
         &__cards {
             justify-content: center;
             align-items: center;
+            height: fit-content;
         }
     }
 
     @media (max-width: 920px) {
-
+        &__cards {
+            height: fit-content;
+        }
     }
 
     @media (max-width: 500px) {
         flex-wrap: wrap;
+        &__cards {
+            height: fit-content;
+        }
     }
 }
