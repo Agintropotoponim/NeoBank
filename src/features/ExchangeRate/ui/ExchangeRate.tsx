@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react";
 import { ConverterService } from "../api/ConverterService";
-import { baseCurrency, currencies, updateIntervaInlMinutes } from "../const/config";
+import { baseCurrency, currencies, moscowDate, updateIntervaInlMinutes, updateInterval } from "../const/config";
+import { illustration } from "../const/illustration";
 import { useFetching } from "../hooks/useFetching";
 import classes from "./ExchangeRate.module.scss";
-import { illustration } from "../const/illustration";
+
 
 interface IRate {
     [key: string]: number;
+}
+
+interface IRateResponse {
+    data: {
+        conversion_rates: IRate;
+    };
 }
 
 export const ExchangeRate: React.FC = () => {
 
     const [rates, setRates] = useState<IRate>({});
 
-    const [fetchRates, isRateLoading, ratesLoadingError] = useFetching(async () => {
+    const {
+        fetchFn: fetchRates,
+        isLoading: isRateLoading,
+        errorMessage: ratesLoadingError
+    } = useFetching<IRateResponse>(async () => {
         const response = await ConverterService.getAll(baseCurrency);
         setRates(response.data.conversion_rates);
+        return response.data;
     });
 
     useEffect(() => {
@@ -24,7 +36,7 @@ export const ExchangeRate: React.FC = () => {
 
         const interval = setInterval(() => {
             fetchRates();
-        }, updateIntervaInlMinutes * 60 * 1000);
+        }, updateInterval);
 
         return () => clearInterval(interval);
     }, []);
@@ -61,7 +73,7 @@ export const ExchangeRate: React.FC = () => {
             </section>
             <section className={classes['currency-converter__right-section']}>
                 <p className={classes['currency-converter__update-info']}>
-                    Update every {updateIntervaInlMinutes} minutes, MSC {new Date().toLocaleDateString("ru")}
+                    Update every {updateIntervaInlMinutes} minutes, MSC {moscowDate}
                 </p>
                 <div>
                     <img

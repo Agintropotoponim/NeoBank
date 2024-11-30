@@ -1,3 +1,5 @@
+@import "shared/styles/scss/_variables";
+
 .service-map-container {
     display: flex;
     flex-direction: column;
@@ -11,7 +13,7 @@
         font-size: 30px;
         line-height: 50px;
         text-align: center;
-        color: #1c1c1c;
+        color: $color-text-primary;
     }
 
     &__desc {
@@ -21,7 +23,7 @@
         font-size: 16px;
         line-height: 50px;
         text-align: center;
-        color: #1c1c1e;
+        color: $color-text-primary;
     }
 
     &__img {

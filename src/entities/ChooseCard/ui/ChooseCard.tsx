@@ -1,4 +1,4 @@
-import { BlueButton } from '../../../shared/ui/BlueButton'
+import { BlueButton } from 'shared/ui/BlueButton'
 import { card1Path, card2Path, card3Path, card4Path } from '../conts/images'
 import classes from './ChooseCard.module.scss'
 
@@ -17,9 +17,9 @@ export const ChooseCard: React.FC = () => {
             </article>
             <div className={classes['choose-container__cards']}>
                 <img src={card1Path} alt="card1" />
-                <img src={card2Path} alt="card1" />
-                <img src={card3Path} alt="card1" />
-                <img src={card4Path} alt="card1" />
+                <img src={card2Path} alt="card2" />
+                <img src={card3Path} alt="card3" />
+                <img src={card4Path} alt="card4" />
             </div>
         </section>
     )

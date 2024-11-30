@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
-import { HomePage } from "../../pages/HomePage/ui/HomePage";
+import { HomePage } from "pages/HomePage/index";
+import { ERoutes } from "shared/types/routesEnum";
 
 interface IRoute {
-    path: string;
+    path: ERoutes;
     element: ReactNode;
     exact: boolean;
 }
 
 export const publicRoutes: IRoute[] = [
-    { path: '/', element: <HomePage />, exact: false },
+    { path: ERoutes.HOME, element: <HomePage />, exact: false },
 ];

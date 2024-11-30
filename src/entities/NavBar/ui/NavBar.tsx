@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { CONTENT_NAVIGATION_MENU } from "../../../shared/consts/contentNavMenu"
+import { CONTENT_NAVIGATION_MENU } from "shared/consts/contentNavMenu"
 import classes from './NavBar.module.scss'
 import { clsx } from "clsx"
 

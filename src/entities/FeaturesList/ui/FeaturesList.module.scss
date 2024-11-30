@@ -1,3 +1,5 @@
+@import "shared/styles/scss/_variables";
+
 .features-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +31,7 @@
         font-weight: 500;
         font-size: 35px;
         line-height: 50px;
-        color: #0b132a;
+        color: $color-feature-article-title;
 
         @media (max-width: 920px) {
             text-align: center;
@@ -42,7 +44,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 30px;
-        color: #4f5665;
+        color: $color-text-quaternary;
 
         @media (max-width: 920px) {
             text-align: center;
@@ -61,7 +63,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 30px;
-        color: #4f5665;
+        color: $color-text-quaternary;
         list-style: none;
         padding: 0;
 

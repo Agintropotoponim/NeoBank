@@ -1,7 +1,13 @@
-import { CustomInput } from '../../../shared/ui/CustomInput'
+import { CustomInput } from 'shared/ui/CustomInput'
 import classes from './Feedback.module.scss'
+import { useState } from 'react'
 
 export const Feedback: React.FC = () => {
+
+    const [value, setValue] = useState<string>("");
+
+    const onChange = (newValue: string) => setValue(newValue);
+
     return (
         <section className={classes['feedback-container']}>
             <h3 className={classes['feedback-container__support']}>
@@ -13,7 +19,7 @@ export const Feedback: React.FC = () => {
             <h3 className={classes['feedback-container__news']}>
                 Bank News
             </h3>
-            <CustomInput />
+            <CustomInput value={value} setValue={setValue} onChange={onChange} />
         </section>
     )
 }

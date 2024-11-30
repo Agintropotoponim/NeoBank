@@ -1,3 +1,5 @@
+@import "shared/styles/scss/_variables";
+
 .feedback-container {
     display: flex;
     flex-direction: column;
@@ -14,7 +16,7 @@
         align-items: center;
         text-align: center;
         letter-spacing: 0.02em;
-        color: #eb801d;
+        color: $color-feedback-container-support;
     }
 
     &__subscribe {
@@ -27,7 +29,7 @@
         align-items: center;
         text-align: center;
         letter-spacing: 0.02em;
-        color: #1c1c1e;
+        color: $color-text-primary;
     }
 
     &__news {
@@ -38,6 +40,6 @@
         line-height: 147.4%;
         text-align: center;
         letter-spacing: 0.02em;
-        color: #1c1c1e;
+        color: $color-text-primary;
     }
 }

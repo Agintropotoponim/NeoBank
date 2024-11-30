@@ -1,9 +1,12 @@
+@import "shared/styles/scss/_variables";
+
 .footer {
     width: 100vw;
-    background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #f4f4f4;
+    background: linear-gradient(0deg, $color-footer-background-light), $color-footer-background-dark;
     display: flex;
     justify-content: center;
     min-height: 462px;
+    box-sizing: border-box;
 }
 
 .footer-container {
@@ -45,7 +48,7 @@
         font-size: 30px;
         line-height: 147.4%;
         text-align: center;
-        color: #000000;
+        color: $color-text-tertiary;
     }
 
     &__contact-data-email {
@@ -56,7 +59,7 @@
         line-height: 147.4%;
         text-align: center;
         letter-spacing: 0.02em;
-        color: #2d3748;
+        color: $color-footer-secondary;
     }
 
     &__links {
@@ -89,7 +92,7 @@
         line-height: 147.4%;
         text-align: center;
         letter-spacing: 0.02em;
-        color: #000000;
+        color: $color-text-tertiary;
         text-decoration: none;
         white-space: nowrap;
     }
@@ -101,7 +104,7 @@
         font-size: 16px;
         line-height: 147.4%;
         letter-spacing: 0.02em;
-        color: #2d3748;
+        color: $color-footer-secondary;
         @media (max-width: 1300px) {
             text-align: center;
         }
@@ -111,7 +114,6 @@
         @media (max-width: 500px) {
             text-align: center;
             height: fit-content;
-            background: linear-gradient(0deg, rgba(178, 178, 178, 0.2), rgba(178, 178, 178, 0.2)), #f4f4f4;
         }
     }
 

@@ -1,3 +1,5 @@
+@import "shared/styles/scss/_variables";
+
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -12,17 +14,17 @@
         display: flex;
         align-items: center;
         letter-spacing: 0.02em;
-        color: rgba(29, 25, 41, 1);
+        color: $color-navbar-item;
         text-decoration: none;
         transition: 0.3s;
     }
 
     &__item:hover {
-        color: rgba(178, 163, 95, 1);
+        color: $color-navbar-active;
     }
 
     &__item_active {
-        color: rgba(178, 163, 95, 1);
+        color: $color-navbar-active;
     }
 
     @media (max-width: 1300px) {

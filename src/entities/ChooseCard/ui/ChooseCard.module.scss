@@ -1,3 +1,5 @@
+@import "shared/styles/scss/_variables";
+
 .choose-container {
     display: flex;
     justify-content: space-between;
@@ -12,7 +14,7 @@
         font-weight: 700;
         font-size: 48px;
         line-height: 50px;
-        color: #1c1c1e;
+        color: $color-text-primary;
         width: 610px;
         box-sizing: border-box;
 

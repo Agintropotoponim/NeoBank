@@ -1,14 +1,13 @@
+@import "shared/styles/scss/_variables";
+
 .currency-converter {
     display: flex;
     justify-content: space-between;
     padding: 20px; //?
     width: 100%;
-    background: linear-gradient(358.2deg, rgba(178, 178, 178, 0.8) 8.06%, rgba(178, 178, 178, 0) 67.93%),
-        rgba(244, 244, 244, 0.9);
+    background: linear-gradient(358.2deg, $currency-converter-background-light), $currency-converter-background-dark;
     mix-blend-mode: normal;
-    box-shadow:
-        0px 0px 4px rgba(0, 0, 0, 0.08),
-        0px 2px 4px rgba(187, 187, 187, 0.2);
+    box-shadow: $currency-converter-shadow-light, $currency-converter-shadow-dark;
     border-radius: 28px;
     box-sizing: border-box;
 
@@ -18,7 +17,7 @@
         font-weight: 500;
         font-size: 30px;
         line-height: 50px;
-        color: #1c1c1e;
+        color: $color-text-primary;
     }
 
     &__currency-inscription {
@@ -27,7 +26,7 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 50px;
-        color: #000000;
+        color: $color-text-tertiary;
     }
 
     &__all-courses {
@@ -40,7 +39,7 @@
         display: flex;
         align-items: center;
         letter-spacing: 0.02em;
-        color: #ffffff;
+        color: $color-text-quinary;
         cursor: pointer;
     }
 
@@ -49,8 +48,6 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
-
-
     }
 
     &__update-info {
@@ -60,7 +57,7 @@
         font-weight: 500;
         font-size: 16px;
         line-height: 50px;
-        color: #000000;
+        color: $color-text-tertiary;
 
         @media (max-width: 920px) {
             height: 30%;
@@ -97,7 +94,7 @@
         display: flex;
         align-items: center;
         letter-spacing: 0.02em;
-        color: #808080;
+        color: $color-currency;
         mix-blend-mode: normal;
     }
 
@@ -110,7 +107,7 @@
         display: flex;
         align-items: center;
         letter-spacing: 0.02em;
-        color: #000000;
+        color: $color-text-tertiary;
     }
 }
 

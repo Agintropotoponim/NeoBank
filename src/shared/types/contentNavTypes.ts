@@ -1,6 +1,8 @@
+import { ERoutes } from "./routesEnum"
+
 export interface IContentNavType {
     title: string
-    link: string
+    link: ERoutes
 }
 
 export interface IContentFooterLink {

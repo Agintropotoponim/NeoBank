@@ -1,12 +1,14 @@
+@import "shared/styles/scss/_variables";
+
 .ci-container {
     display: flex;
     align-items: center;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: $color-custom-input-background;
+    border: 1px solid $color-custom-input-border;
     align-items: center;
     border-radius: 20px;
     padding: 5px 10px;
-    box-shadow: 0px 10px 20px rgba(54, 58, 120, 0.1);
+    box-shadow: 0px 10px 20px $color-custom-input-shadow;
     width: 524.8px;
     box-sizing: border-box;
 
@@ -25,7 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #9ca3af;
+        color: $color-custom-input-icon-text;
     }
 
     &__input {
@@ -33,7 +35,7 @@
         border: none;
         outline: none;
         font-size: 16px;
-        color: #4b5563;
+        color: $color-custom-input-text;
         height: 78px;
         box-sizing: border-box;
         padding-left: 10px;
@@ -43,7 +45,7 @@
         }
 
         &::placeholder {
-            color: rgba(144, 146, 176, 1);
+            color: $color-custom-input-placeholder;
         }
     }
 
@@ -57,8 +59,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #686df1;
-        color: #ffffff;
+        background: $color-custom-input-button-background;
+        color: $color-custom-input-button-text;
         border: none;
         border-radius: 20px;
         padding: 10px 16px;
@@ -79,7 +81,7 @@
         }
 
         &:hover {
-            background-color: #4f46e5;
+            background-color: $horizontal-rule-background;
         }
     }
 

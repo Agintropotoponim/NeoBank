@@ -2,7 +2,20 @@ import React from "react";
 import classes from "./CustomInput.module.scss";
 import { email, send } from "./consts/icons";
 
-export const CustomInput: React.FC = () => {
+interface ICustomInputProps {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+    onChange: (value: string) => void;
+}
+
+export const CustomInput: React.FC<ICustomInputProps> = ({ value, setValue, onChange }) => {
+
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        setValue(newValue);
+        onChange(newValue);
+    };
+
     return (
         <div className={classes['ci-container']}>
             <div className={classes['ci-container__email-icon']}>
@@ -11,6 +24,8 @@ export const CustomInput: React.FC = () => {
             <input
                 type="email"
                 placeholder="Your email"
+                value={value}
+                onChange={onChangeHandler}
                 className={classes['ci-container__input']}
             />
             <button className={classes['ci-container__button']}>

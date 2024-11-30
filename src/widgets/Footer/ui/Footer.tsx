@@ -1,11 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import { CONTENT_FOOTER_LINKS } from '../../../shared/consts/contentFooterLinks'
+import { HorizontalRule } from '../../../shared/ui/HorizontalRule'
+import { emailAdress, phoneNumber } from '../const/contactData'
 import { logo } from '../const/logo'
 import classes from './Footer.module.scss'
-import clsx from 'clsx'
-import { emailAdress, phoneNumber } from '../const/contactData'
-import { email } from '../../../shared/ui/CustomInput/consts/icons'
-import { HorizontalRule } from '../../../shared/ui/HorizontalRule'
 
 export const Footer: React.FC = () => {
 

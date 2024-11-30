@@ -1,11 +1,12 @@
-@import "../../styles/scss/mixins";
+@import "shared/styles/scss/mixins";
+@import "shared/styles/scss/_variables";
 
 .blue-button {
     @include flex-center;
 
     padding: 8px;
     gap: 8px;
-    background: #003cff;
+    background: $color-blue-button-background;
     border-radius: 16px;
     font-family: "Ubuntu";
     font-style: normal;
@@ -15,15 +16,15 @@
     font-feature-settings:
         "salt" on,
         "liga" off;
-    color: #ffffff;
+    color: $color-text-quinary;
     border: none;
     transition: 0.3s;
     cursor: pointer;
     &_disabled {
-        background: rgba(119, 150, 192, 1);
+        background: $color-blue-button-background-disabled;
     }
 }
 
 .blue-button:hover {
-    background: rgba(119, 150, 192, 1);
+    background: $color-blue-button-background-disabled;
 }

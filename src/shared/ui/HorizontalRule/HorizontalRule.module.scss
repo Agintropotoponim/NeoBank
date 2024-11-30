@@ -1,5 +1,7 @@
+@import "shared/styles/scss/_variables";
+
 .hr {
-    background: rgba(255, 255, 255, 0.81);
+    background: $horizontal-rule-background;
     height: 1px;
     width: 100%;
 }

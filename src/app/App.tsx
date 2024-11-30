@@ -1,9 +1,6 @@
-import 'normalize.css'
-import './App.scss';
-import '../shared/styles/globals.css'
-import { NavBar } from '../entities/NavBar';
+import 'normalize.css';
 import { BrowserRouter } from 'react-router-dom';
-import { BlueButton } from '../shared/ui/BlueButton/BlueButton';
+import '../shared/styles/globals.css';
 import AppRouter from './routers/AppRouter';
 
 function App() {
