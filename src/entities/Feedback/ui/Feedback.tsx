@@ -1,6 +1,50 @@
-import { CustomInput } from 'shared/ui/CustomInput'
-import classes from './Feedback.module.scss'
-import { useState } from 'react'
+import { useState } from 'react';
+import { CustomInput } from 'shared/ui/CustomInput';
+import styled from 'styled-components';
+
+const FeedbackContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+`;
+
+const SupportTitle = styled.h3`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 147.4%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: ${({ theme }) => theme.colors.feedbackContainerSupport};
+`;
+
+const SubscribeTitle = styled.h3`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: ${({ theme }) => theme.colors.textPrimary};
+`;
+
+const BankNewsTitle = styled.h3`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 147.4%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: ${({ theme }) => theme.colors.textPrimary};
+`;
 
 export const Feedback: React.FC = () => {
 
@@ -9,17 +53,17 @@ export const Feedback: React.FC = () => {
     const onChange = (newValue: string) => setValue(newValue);
 
     return (
-        <section className={classes['feedback-container']}>
-            <h3 className={classes['feedback-container__support']}>
+        <FeedbackContainer>
+            <SupportTitle>
                 Support
-            </h3>
-            <h3 className={classes['feedback-container__subscribe']}>
+            </SupportTitle>
+            <SubscribeTitle>
                 Subscribe Newsletter & get
-            </h3>
-            <h3 className={classes['feedback-container__news']}>
+            </SubscribeTitle>
+            <BankNewsTitle>
                 Bank News
-            </h3>
-            <CustomInput value={value} setValue={setValue} onChange={onChange} />
-        </section>
+            </BankNewsTitle>
+            <CustomInput value={value} onChange={onChange} />
+        </FeedbackContainer>
     )
 }

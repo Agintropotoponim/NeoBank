@@ -1,9 +1,13 @@
-import classes from './HorizontalRule.module.scss'
+import styled from 'styled-components';
+
+const CustomHR = styled.div`
+    background: ${({ theme }) => theme.colors.horizontalRule};
+    height: 1px;
+    width: 100%;
+`;
 
 export const HorizontalRule = () => {
     return (
-        <div className={classes['hr']}>
-
-        </div>
+        <CustomHR></CustomHR>
     )
 }

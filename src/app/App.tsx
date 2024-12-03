@@ -1,14 +1,14 @@
 import 'normalize.css';
-import { BrowserRouter } from 'react-router-dom';
 import '../shared/styles/globals.css';
+import { AppProviders } from './providers/AppProviders';
 import AppRouter from './routers/AppRouter';
 
 function App() {
     return (
         <div className="App">
-            <BrowserRouter>
+            <AppProviders>
                 <AppRouter />
-            </BrowserRouter>
+            </AppProviders>
         </div>
     );
 }

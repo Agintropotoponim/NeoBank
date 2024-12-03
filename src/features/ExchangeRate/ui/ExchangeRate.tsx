@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { ConverterService } from "../api/ConverterService";
 import { baseCurrency, currencies, moscowDate, updateIntervaInlMinutes, updateInterval } from "../const/config";
 import { illustration } from "../const/illustration";
 import { useFetching } from "../hooks/useFetching";
-import classes from "./ExchangeRate.module.scss";
-
+import { rubForOneUnit } from "../lib/rubForOneUnit";
 
 interface IRate {
     [key: string]: number;
@@ -15,6 +15,142 @@ interface IRateResponse {
         conversion_rates: IRate;
     };
 }
+
+const CurrencyConverter = styled.section`
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    background: linear-gradient(358.2deg, 
+        ${({ theme }) => theme.colors.currencyConverter.backgroundLight}, 
+        ${({ theme }) => theme.colors.currencyConverter.backgroundDark});
+    mix-blend-mode: normal;
+    box-shadow: 
+        ${({ theme }) => theme.colors.currencyConverter.shadowLight}, 
+        ${({ theme }) => theme.colors.currencyConverter.shadowDark};
+    border-radius: 28px;
+    box-sizing: border-box;
+`;
+
+const Title = styled.h2`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 50px;
+    color: ${({ theme }) => theme.colors.textPrimary};
+
+    @media (max-width: 920px) {
+        text-align: center;
+    }
+`;
+
+const CurrencyInscription = styled.h2`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 50px;
+    color: ${({ theme }) => theme.colors.textTertiary};
+`;
+
+const LeftSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+`;
+
+const RightSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+`;
+
+const CurrencyGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+
+    @media (max-width: 920px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+    }
+`;
+
+const ConversionItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const CurrencyText = styled.span`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 112%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: ${({ theme }) => theme.colors.currencyConverter.currency};
+`;
+
+const CurrencyValue = styled.span`
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 112%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: ${({ theme }) => theme.colors.textTertiary};
+`;
+
+const UpdateInfo = styled.p`
+    display: flex;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 50px;
+    color: ${({ theme }) => theme.colors.textTertiary};
+
+    @media (max-width: 920px) {
+        height: 30%;
+    }
+
+    @media (max-width: 500px) {
+        margin-top: 25px;
+        padding-left: 20px;
+    }
+`;
+
+const AllCourses = styled.p`
+    width: fit-content;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 112%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: ${({ theme }) => theme.colors.textQuinary};
+    cursor: pointer;
+`;
+
+const ConverterImage = styled.img`
+    @media (max-width: 920px) {
+        width: 70px;
+    }
+`;
 
 export const ExchangeRate: React.FC = () => {
 
@@ -42,14 +178,14 @@ export const ExchangeRate: React.FC = () => {
     }, []);
 
     return (
-        <section className={classes['currency-converter']}>
-            <section className={classes['currency-converter__left-section']}>
-                <h1 className={classes['currency-converter__title']}>Exchange rate in Internet Bank</h1>
-                <h2 className={classes['currency-converter__currency-inscription']}>Currency</h2>
-                <div className={classes['currency-grid']}>
+        <CurrencyConverter>
+            <LeftSection>
+                <Title>Exchange rate in Internet Bank</Title>
+                <CurrencyInscription>Currency</CurrencyInscription>
+                <CurrencyGrid>
                     {isRateLoading && <p>Loading...</p>}
                     {ratesLoadingError && (
-                        <p className={classes['error-message']}>
+                        <p>
                             {String(ratesLoadingError)}
                         </p>
                     )}
@@ -58,32 +194,28 @@ export const ExchangeRate: React.FC = () => {
                             const rate = rates[currency];
                             if (!rate) return null;
 
-                            const rubForOneUnit = (1 / rate).toFixed(2);
+                            const rubForOneUnitValue = rubForOneUnit(rate);
                             return (
-                                <div className={classes['conversion-item']} key={currency}>
-                                    <span className={classes['conversion-item__currency']}>{currency}:</span>
-                                    <span className={classes['conversion-item__currency-value']}>{rubForOneUnit}</span>
-                                </div>
+                                <ConversionItem key={currency}>
+                                    <CurrencyText>{currency}:</CurrencyText>
+                                    <CurrencyValue>{rubForOneUnitValue}</CurrencyValue>
+                                </ConversionItem>
                             );
                         })}
-                </div>
-                <p className={classes['currency-converter__all-courses']}>
-                    All courses
-                </p>
-            </section>
-            <section className={classes['currency-converter__right-section']}>
-                <p className={classes['currency-converter__update-info']}>
+                </CurrencyGrid>
+                <AllCourses>All courses</AllCourses>
+            </LeftSection>
+            <RightSection>
+                <UpdateInfo>
                     Update every {updateIntervaInlMinutes} minutes, MSC {moscowDate}
-                </p>
+                </UpdateInfo>
                 <div>
-                    <img
+                    <ConverterImage
                         src={illustration}
                         alt="bank"
-                        className={classes['converter-image']}
                     />
                 </div>
-
-            </section>
-        </section>
+            </RightSection>
+        </CurrencyConverter>
     );
 };
