@@ -1,0 +1,1 @@
+export const serviceMap =  require('../assets/service-map.svg').default;

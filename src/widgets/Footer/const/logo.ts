@@ -1,0 +1,1 @@
+export const logo = require('../assets/logo.svg').default;
