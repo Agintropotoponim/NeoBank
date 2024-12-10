@@ -1,0 +1,1 @@
+export const checkMark = require('../assets/checkmark.svg').default;
