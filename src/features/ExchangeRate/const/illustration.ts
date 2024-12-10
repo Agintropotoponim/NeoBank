@@ -1,1 +1,0 @@
-export const illustration = require('../assets/bank-icon.svg').default;

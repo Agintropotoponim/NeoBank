@@ -1,7 +1,7 @@
-export const card1Path: string = require("../assets/cardImage1.svg").default;
-export const card2Path: string = require("../assets/cardImage2.svg").default;
-export const card3Path: string = require("../assets/cardImage3.svg").default;
-export const card4Path: string = require("../assets/cardImage4.svg").default;
+import card1 from '../assets/cardImage1.svg';
+import card2 from '../assets/cardImage2.svg';
+import card3 from '../assets/cardImage3.svg';
+import card4 from '../assets/cardImage4.svg';
 
 interface Card {
     path: string;
@@ -9,20 +9,8 @@ interface Card {
 }
 
 export const cards: Card[] = [
-    {
-        path: card1Path,
-        desc: "card 1"
-    },
-    {
-        path: card2Path,
-        desc: "card 2"
-    },
-    {
-        path: card3Path,
-        desc: "card 3"
-    },
-    {
-        path: card4Path,
-        desc: "card 4"
-    },
-]
+    { path: card1, desc: 'Card 1' },
+    { path: card2, desc: 'Card 2' },
+    { path: card3, desc: 'Card 3' },
+    { path: card4, desc: 'Card 4' },
+];

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { device } from "shared/config/theme/device";
 import { CONTENT_NAVIGATION_MENU } from "shared/consts/contentNavMenu";
 import styled from "styled-components";
 
@@ -9,11 +10,11 @@ const Nav = styled.nav`
     flex-wrap: wrap;
     width: 437px;
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         width: 100%;
     }
 
-     @media (max-width: 500px) {
+    @media ${device.tabletS} {
         flex-wrap: wrap;
         width: 90%;
         gap: 20px;

@@ -1,3 +1,4 @@
+import { device } from 'shared/config/theme/device';
 import styled from 'styled-components'
 
 interface ILogoProps {
@@ -17,15 +18,15 @@ const LogoHolder = styled.div`
     color: ${({ theme }) => theme.colors.logo};
     cursor: pointer;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         font-size: 26px;
     }
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         font-size: 28px;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         font-size: 30px;
     }
 `;

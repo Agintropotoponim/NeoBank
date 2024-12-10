@@ -1,33 +1,35 @@
 import styled from 'styled-components';
-import { illustration } from '../const/illustrations';
 import { checkMark } from '../const/illustrations';
+import { ReactComponent as FeaturesIllustration } from '../assets/feature-list-illustration.svg';
+import { device } from 'shared/config/theme/device';
 
 const FeaturesListContainer = styled.section`
     display: flex;
     flex-wrap: wrap;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         justify-content: center;
     }
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         width: fit-content;
-    }
-
-    @media (max-width: 500px) {
     }
 `;
 
-const FeatureIllustration = styled.img`
-    @media (max-width: 920px) {
+const StyledFeatureIllustration = styled(FeaturesIllustration)`
+    max-width: 508.12px;
+    max-height: 414.71px;
+
+    @media ${device.laptopS} {
         width: 100%;
+        height: auto;
     }
 `;
 
 const FeaturesArticle = styled.article`
     width: 790px;
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         width: fit-content;
         display: flex;
         flex-direction: column;
@@ -43,7 +45,7 @@ const Title = styled.p`
     line-height: 50px;
     color: ${({ theme }) => theme.colors.featureArticleTitle};
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         text-align: center;
     }
 `;
@@ -56,13 +58,13 @@ const Description = styled.p`
     line-height: 30px;
     color: ${({ theme }) => theme.colors.textQuaternary};
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         text-align: center;
         width: 90%;
         font-size: 18px;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         font-size: 20px;
     }
 `;
@@ -77,18 +79,18 @@ const List = styled.ul`
     list-style: none;
     padding: 0;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         display: flex;
         justify-content: center;
     }
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         flex-direction: column;
         width: 50%;
         font-size: 16px;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         font-size: 18px;
         width: 100%;
     }
@@ -100,7 +102,7 @@ const ListItem = styled.li`
     gap: 15px;
     padding: 8px 0;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         text-align: center;
     }
 
@@ -119,7 +121,7 @@ const ListItem = styled.li`
 export const FeaturesList: React.FC = () => {
     return (
         <FeaturesListContainer>
-            <FeatureIllustration src={illustration} alt="feature-illustration" />
+            <StyledFeatureIllustration />
             <FeaturesArticle>
                 <Title>We Provide Many Features You Can Use</Title>
                 <Description>You can explore the features that we provide with fun and have their own functions each feature</Description>

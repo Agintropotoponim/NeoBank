@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { serviceMap } from '../const/service-map';
+import { ReactComponent as ServiceMapImage } from '../assets/service-map.svg';
+import { device } from 'shared/config/theme/device';
 
 const ServiceMapContainer = styled.section`
     display: flex;
@@ -28,8 +29,14 @@ const Description = styled.h3`
     color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-const Image = styled.img`
-    width: 100%;
+const StyledServiceMapImage = styled(ServiceMapImage)`
+    max-width: 1060px;
+    max-height: 537.77px;
+
+    @media ${device.desktopS} {
+        width: 100%;
+        height: auto
+    }
 `;
 
 export const ServiceMap: React.FC = () => {
@@ -41,7 +48,7 @@ export const ServiceMap: React.FC = () => {
             <Description>
                 Withdraw and transfer money online through our application
             </Description>
-            <Image src={serviceMap} alt="services map" />
+            <StyledServiceMapImage />
         </ServiceMapContainer>
     )
 }

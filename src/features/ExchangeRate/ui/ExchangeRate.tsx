@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ConverterService } from "../api/ConverterService";
+import { ReactComponent as BankIcon } from '../assets/bank-icon.svg';
 import { baseCurrency, currencies, moscowDate, updateIntervaInlMinutes, updateInterval } from "../const/config";
-import { illustration } from "../const/illustration";
-import { useFetching } from "../hooks/useFetching";
+import { useExchangeRates } from "../hooks/useExchangeRate";
 import { rubForOneUnit } from "../lib/rubForOneUnit";
+import { device } from "shared/config/theme/device";
 
-interface IRate {
-    [key: string]: number;
-}
+const StyledBankIcon = styled(BankIcon)`
+    max-width: 120px;
+    height: 112.76px;
 
-interface IRateResponse {
-    data: {
-        conversion_rates: IRate;
-    };
-}
+    @media ${device.laptopS} {
+        width: 70px;
+    }
+`;
 
 const CurrencyConverter = styled.section`
     display: flex;
@@ -74,11 +72,11 @@ const CurrencyGrid = styled.div`
     gap: 20px;
     margin: 20px 0;
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         grid-template-columns: 1fr;
     }
 `;
@@ -122,11 +120,12 @@ const UpdateInfo = styled.p`
     line-height: 50px;
     color: ${({ theme }) => theme.colors.textTertiary};
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
+        padding-top: 10px;
         height: 30%;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         margin-top: 25px;
         padding-left: 20px;
     }
@@ -146,36 +145,9 @@ const AllCourses = styled.p`
     cursor: pointer;
 `;
 
-const ConverterImage = styled.img`
-    @media (max-width: 920px) {
-        width: 70px;
-    }
-`;
-
 export const ExchangeRate: React.FC = () => {
 
-    const [rates, setRates] = useState<IRate>({});
-
-    const {
-        fetchFn: fetchRates,
-        isLoading: isRateLoading,
-        errorMessage: ratesLoadingError
-    } = useFetching<IRateResponse>(async () => {
-        const response = await ConverterService.getAll(baseCurrency);
-        setRates(response.data.conversion_rates);
-        return response.data;
-    });
-
-    useEffect(() => {
-
-        fetchRates();
-
-        const interval = setInterval(() => {
-            fetchRates();
-        }, updateInterval);
-
-        return () => clearInterval(interval);
-    }, []);
+    const { rates, isRatesLoading, ratesError } = useExchangeRates({ baseCurrency, updateInterval });
 
     return (
         <CurrencyConverter>
@@ -183,10 +155,10 @@ export const ExchangeRate: React.FC = () => {
                 <Title>Exchange rate in Internet Bank</Title>
                 <CurrencyInscription>Currency</CurrencyInscription>
                 <CurrencyGrid>
-                    {isRateLoading && <p>Loading...</p>}
-                    {ratesLoadingError && (
+                    {isRatesLoading && <p>Loading...</p>}
+                    {ratesError && (
                         <p>
-                            {String(ratesLoadingError)}
+                            {String(ratesError.message)}
                         </p>
                     )}
                     {Object.keys(rates).length > 0 &&
@@ -209,12 +181,7 @@ export const ExchangeRate: React.FC = () => {
                 <UpdateInfo>
                     Update every {updateIntervaInlMinutes} minutes, MSC {moscowDate}
                 </UpdateInfo>
-                <div>
-                    <ConverterImage
-                        src={illustration}
-                        alt="bank"
-                    />
-                </div>
+                <StyledBankIcon />
             </RightSection>
         </CurrencyConverter>
     );

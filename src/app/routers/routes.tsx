@@ -9,5 +9,5 @@ interface IRoute {
 }
 
 export const publicRoutes: IRoute[] = [
-    { path: ERoutes.HOME, element: <HomePage />, exact: false },
+    { path: ERoutes.HOMEPAGE, element: <HomePage />, exact: false },
 ];

@@ -1,5 +1,5 @@
 export enum ERoutes {
-    HOME = '/',
+    HOMEPAGE = '/',
     CREDIT_CARD = '/credit-card',
     PRODUCT = '/product',
     ACCOUNT = '/account',

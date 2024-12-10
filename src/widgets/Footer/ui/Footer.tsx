@@ -4,6 +4,17 @@ import { CONTENT_FOOTER_LINKS } from '../../../shared/consts/contentFooterLinks'
 import { HorizontalRule } from '../../../shared/ui/HorizontalRule'
 import { emailAdress, phoneNumber } from '../const/contactData'
 import { logo } from '../const/logo'
+import { device } from 'shared/config/theme/device'
+import { ReactComponent as LogoIcon } from '../assets/logo.svg';
+
+const StyledLogoIcon = styled(LogoIcon)`
+    max-width: 158.14px;
+    max-height: 50px;
+
+    @media ${device.tabletS} {
+        width: fit-content;
+    }
+`;
 
 const FooterHolder = styled.footer`
     width: 100vw;
@@ -29,7 +40,7 @@ const UpperSection = styled.section`
     flex-wrap: wrap;
     height: fit-content;
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         flex-direction: column;
         align-items: center;
         gap: 10px;
@@ -43,7 +54,7 @@ const ContactData = styled.p`
     align-items: flex-start;
     justify-content: space-between;
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         height: fit-content;
     }
 `;
@@ -78,15 +89,15 @@ const LinksContainer = styled.ul`
     padding: 0;
     margin: 0;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         justify-content: center;
     }
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         justify-content: center;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         justify-content: center;
     }
 `;
@@ -113,25 +124,17 @@ const Cookies = styled.section`
     letter-spacing: 0.02em;
     color: ${({ theme }) => theme.colors.footer.secondary};
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         text-align: center;
     }
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         text-align: center;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         text-align: center;
         height: fit-content;
-    }
-`;
-
-const Logo = styled.img`
-    width: 158.14px;
-
-    @media (max-width: 500px) {
-        width: fit-content;
     }
 `;
 
@@ -152,7 +155,7 @@ export const Footer: React.FC = () => {
         <FooterHolder>
             <FooterContainer>
                 <UpperSection>
-                    <Logo src={logo} alt="logo" />
+                    <StyledLogoIcon />
                     <ContactData>
                         <ContactPhone>
                             {phoneNumber}

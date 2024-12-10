@@ -1,6 +1,7 @@
 import { BlueButton } from 'shared/ui/BlueButton';
 import styled from 'styled-components';
 import { cards } from '../conts/images';
+import { device } from 'shared/config/theme/device';
 
 const ChooseCardContainer = styled.section`
     display: flex;
@@ -9,11 +10,11 @@ const ChooseCardContainer = styled.section`
     width: 100%;
     gap: 10px;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         justify-content: center;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         flex-wrap: wrap;
     }
 `;
@@ -28,7 +29,7 @@ const TitleBlock = styled.article`
     width: 610px;
     box-sizing: border-box;
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -47,26 +48,31 @@ const CardsBlock = styled.div`
     height: 314.78px;
     box-sizing: border-box;
 
-    @media (max-width: 1300px) {
+    @media ${device.desktopS} {
         justify-content: flex-end;
         align-items: center;
         height: fit-content;
     }
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         height: fit-content;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         justify-content: center;
         height: fit-content;
     }
 `;
 
+const Card = styled.img`
+    max-width: 250px;
+    max-height: 148.78px;
+`;
+
 export const ChooseCard: React.FC = () => {
 
     const cardsContent = cards.map(card =>
-        <img src={card.path} alt={card.desc} />
+        <Card src={card.path} alt={card.desc} loading='lazy' />
     )
 
     return (

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { NavBar } from '../../../entities/NavBar'
 import { BlueButton } from '../../../shared/ui/BlueButton'
 import { Logo } from '../../../shared/ui/Logo'
+import { device } from 'shared/config/theme/device'
 
 const HeaderHolder = styled.header`
     display: flex;
@@ -13,14 +14,14 @@ const HeaderHolder = styled.header`
     width: 100%;
     box-sizing: border-box;
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         flex-direction: column;
         align-items: center;
         height: fit-content;
         gap: 16px;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         flex-direction: column;
         align-items: center;
         gap: 16px;
@@ -33,7 +34,7 @@ export const Header: React.FC = () => {
     const nav = useNavigate();
 
     const onClickHandler = () => {
-        nav(ERoutes.HOME);
+        nav(ERoutes.HOMEPAGE);
     }
 
     return (

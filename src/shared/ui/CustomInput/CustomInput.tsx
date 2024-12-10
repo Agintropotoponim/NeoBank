@@ -1,6 +1,8 @@
 import React from "react";
-import { email, send } from "./consts/icons";
+import { device } from "shared/config/theme/device";
 import styled from "styled-components";
+import { ReactComponent as EmailIcon } from './assets/email-icon.svg';
+import { ReactComponent as SendIcon } from './assets/send-icon.svg';
 
 interface ICustomInputProps {
     value: string;
@@ -13,28 +15,23 @@ const Container = styled.div`
     background: ${({ theme }) => theme.colors.customInput.background};
     border: 1px solid ${({ theme }) => theme.colors.customInput.border};
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 5px 30px;
     box-shadow: 0px 10px 20px ${({ theme }) => theme.colors.customInput.shadow};
     width: 524.8px;
     box-sizing: border-box;
 
-    @media (max-width: 920px) {
+    @media ${device.laptopS} {
         width: 450px;
     }
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         width: 100%;
     }
 `;
 
-const IconContainer = styled.div`
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${({ theme }) => theme.colors.customInput.text};
+const StyledEmailIcon = styled(EmailIcon)`
+    max-width: 29px;
+    max-width: 38px;
 `;
 
 const Input = styled.input`
@@ -47,7 +44,7 @@ const Input = styled.input`
     box-sizing: border-box;
     padding-left: 10px;
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         width: 100%;
     }
 
@@ -76,7 +73,7 @@ const Button = styled.button`
     height: 44.92px;
     box-sizing: border-box;
 
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         width: fit-content;
     }
 
@@ -85,34 +82,35 @@ const Button = styled.button`
     }
 `;
 
-const SendIcon = styled.span`
+const StyledSendIcon = styled(SendIcon)`
     margin-right: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 500px) {
+    max-width: 31px;
+    max-height: 41px;
+
+    @media ${device.tabletS} {
         width: fit-content;
     }
 `;
 
 const SubscribeText = styled.span`
-    @media (max-width: 500px) {
+    @media ${device.tabletS} {
         display: none;
     }
 `;
 
 export const CustomInput: React.FC<ICustomInputProps> = ({ value, onChange }) => {
-    
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
     };
 
     return (
         <Container>
-            <IconContainer>
-                <img src={email} alt="email" />
-            </IconContainer>
+            <StyledEmailIcon />
             <Input
                 type="email"
                 placeholder="Your email"
@@ -120,9 +118,7 @@ export const CustomInput: React.FC<ICustomInputProps> = ({ value, onChange }) =>
                 onChange={onChangeHandler}
             />
             <Button>
-                <SendIcon>
-                    <img src={send} alt="send" />
-                </SendIcon>
+                <StyledSendIcon />
                 <SubscribeText>Subscribe</SubscribeText>
             </Button>
         </Container>
