@@ -3,6 +3,7 @@ import { FeaturesList } from 'entities/FeaturesList/index'
 import { Feedback } from 'entities/Feedback/index'
 import { ServiceMap } from 'entities/ServiceMap/index'
 import { ExchangeRate } from 'features/ExchangeRate/index'
+import { NewsSlider } from 'features/NewsSlider'
 import { device } from 'shared/config/theme/device'
 import styled from 'styled-components'
 import { Footer } from 'widgets/Footer/index'
@@ -38,6 +39,7 @@ export const HomePage: React.FC = () => {
             <FeaturesList />
             <ExchangeRate />
             <ServiceMap />
+            <NewsSlider />
             <Feedback />
             <Footer />
         </HomePageHolder>
