@@ -65,7 +65,7 @@ export const NewsSlider: React.FC = () => {
     const sliderRef = useRef<HTMLDivElement | null>(null);
     const [isAtStart, setIsAtStart] = useState(true);
     const [isAtEnd, setIsAtEnd] = useState(false);
-    const [scrollAmount, setScrollAmount] = useState(300);
+    const [scrollAmount, setScrollAmount] = useState(385);
 
     const { validArticles, isLoading, error } = useNews();
 
