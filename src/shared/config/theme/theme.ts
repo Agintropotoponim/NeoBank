@@ -38,6 +38,11 @@ export const theme = {
             backgroundDark: "#f4f4f4",
             secondary: "#2d3748",
         },
+        newsCard: {
+            shadowLight: "0px 0px 4px rgba(0, 0, 0, 0.08)",
+            shadowDark: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+            background: "#FFFFFF"
+        }
     },
 };
 

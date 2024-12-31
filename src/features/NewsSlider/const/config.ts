@@ -1,0 +1,1 @@
+export const apiKey = process.env.REACT_APP_NEWS_API_KEY as string;
