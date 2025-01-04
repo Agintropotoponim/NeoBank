@@ -1,0 +1,1 @@
+export { RatesAndConditionsTab } from "./ui/RatesAndConditionsTab";

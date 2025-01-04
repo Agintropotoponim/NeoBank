@@ -7,6 +7,7 @@ import { ReactComponent as SendIcon } from './assets/send-icon.svg';
 interface ICustomInputProps {
     value: string;
     onChange: (value: string) => void;
+    onSubmit: () => void;
 }
 
 const Container = styled.div`
@@ -96,14 +97,7 @@ const StyledSendIcon = styled(SendIcon)`
     }
 `;
 
-const SubscribeText = styled.span`
-    @media ${device.tabletS} {
-        display: none;
-    }
-`;
-
-export const CustomInput: React.FC<ICustomInputProps> = ({ value, onChange }) => {
-
+export const CustomInput: React.FC<ICustomInputProps> = ({ value, onChange, onSubmit }) => {
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
     };
@@ -117,9 +111,9 @@ export const CustomInput: React.FC<ICustomInputProps> = ({ value, onChange }) =>
                 value={value}
                 onChange={onChangeHandler}
             />
-            <Button>
+            <Button onClick={onSubmit}>
                 <StyledSendIcon />
-                <SubscribeText>Subscribe</SubscribeText>
+                Subscribe
             </Button>
         </Container>
     );

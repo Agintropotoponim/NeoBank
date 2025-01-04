@@ -4,6 +4,7 @@ import { baseCurrency, currencies, moscowDate, updateIntervaInlMinutes, updateIn
 import { useExchangeRates } from "../hooks/useExchangeRate";
 import { rubForOneUnit } from "../lib/rubForOneUnit";
 import { device } from "shared/config/theme/device";
+import { Loader } from "shared/ui/Loader";
 
 const StyledBankIcon = styled(BankIcon)`
     max-width: 120px;
@@ -155,7 +156,7 @@ export const ExchangeRate: React.FC = () => {
                 <Title>Exchange rate in Internet Bank</Title>
                 <CurrencyInscription>Currency</CurrencyInscription>
                 <CurrencyGrid>
-                    {isRatesLoading && <p>Loading...</p>}
+                    {isRatesLoading && <Loader />}
                     {ratesError && (
                         <p>
                             {String(ratesError.message)}

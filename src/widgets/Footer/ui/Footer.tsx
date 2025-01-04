@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import { device } from 'shared/config/theme/device'
 import styled from 'styled-components'
 import { CONTENT_FOOTER_LINKS } from '../../../shared/consts/contentFooterLinks'
 import { HorizontalRule } from '../../../shared/ui/HorizontalRule'
+import { ReactComponent as LogoIcon } from '../assets/logo.svg'
 import { emailAdress, phoneNumber } from '../const/contactData'
-import { logo } from '../const/logo'
-import { device } from 'shared/config/theme/device'
-import { ReactComponent as LogoIcon } from '../assets/logo.svg';
 
 const StyledLogoIcon = styled(LogoIcon)`
     max-width: 158.14px;
