@@ -7,6 +7,7 @@ import { ReactComponent as ButtonLeftDisabled } from '../assets/button-disabled-
 import { ReactComponent as ButtonRightActive } from '../assets/button-active-right.svg';
 import { ReactComponent as ButtonRightDisabled } from '../assets/button-disabled-right.svg';
 import { device } from 'shared/config/theme/device';
+import { Loader } from 'shared/ui/Loader';
 
 
 const SliderContainer = styled.div`
@@ -124,7 +125,7 @@ export const NewsSlider: React.FC = () => {
         scrollSlider('right');
     }
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loader />;
     if (error) return <p>Error loading news. Please try again later.</p>;
 
     return (
