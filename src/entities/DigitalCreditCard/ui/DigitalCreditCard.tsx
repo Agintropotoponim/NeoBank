@@ -4,6 +4,8 @@ import { ReactComponent as CardImage } from '../assets/cardImage.svg';
 import { traits } from '../consts/traits';
 import { Tooltip } from 'shared/ui/Tooltip';
 import { ApplyButton } from 'shared/ui/ApplyButton';
+import { useLoanStore } from 'shared/hooks/useLoanStore';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     background: ${({ theme }) => theme.colors.loanPage.creditCardLinearGradient};
@@ -166,6 +168,8 @@ interface IDigitalCreditCardProps {
 }
 
 export const DigitalCreditCard: React.FC<IDigitalCreditCardProps> = ({ scrollToApp }) => {
+    const { currentStep, applicationId } = useLoanStore();
+    const nav = useNavigate();
 
     const traitsList = traits.map(({ key, value, tooltip }) => (
         <Trait key={key}>
@@ -173,7 +177,27 @@ export const DigitalCreditCard: React.FC<IDigitalCreditCardProps> = ({ scrollToA
             <TraitKey>{key}</TraitKey>
             <Tooltip>{tooltip}</Tooltip>
         </Trait>
-    ))
+    ));
+
+    const continueConfig: Record<number, { fn?: () => void; link?: string }> = {
+        0: { fn: scrollToApp },
+        1: { fn: scrollToApp },
+        2: { link: `/loan/${applicationId}` },
+        3: { link: `/loan/${applicationId}/document` },
+        4: { link: `/loan/${applicationId}/document/sign` },
+        5: { link: `/loan/${applicationId}/code` },
+    };
+
+    const clickHandler = () => {
+        const action = continueConfig[currentStep];
+        if (action?.fn) {
+            action.fn();
+        } else if (action?.link) {
+            nav(action.link);
+        }
+    };
+
+    let label = currentStep < 2 ? "Apply for card" : "Continue";
 
     return (
         <Container>
@@ -184,11 +208,11 @@ export const DigitalCreditCard: React.FC<IDigitalCreditCardProps> = ({ scrollToA
                     <DescriptionItem>Cash withdrawals and transfers without commission and interest.</DescriptionItem>
                 </Description>
                 <TraitList>{traitsList}</TraitList>
-                <ApplyButton onClick={scrollToApp}>Apply for card</ApplyButton>
+                <ApplyButton onClick={clickHandler}>{label}</ApplyButton>
             </LeftSection>
             <RightSection>
                 <CardIllustration />
             </RightSection>
         </Container>
-    )
+    );
 }
