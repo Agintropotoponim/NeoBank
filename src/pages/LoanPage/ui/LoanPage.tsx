@@ -1,13 +1,16 @@
 import { DigitalCreditCard } from "entities/DigitalCreditCard";
+import { HowToGetCard } from "entities/HowToGetCard";
+import { Prescoring } from "features/Prescoring";
 import { Tabs } from "features/Tabs";
+import { useRef } from "react";
 import { device } from "shared/config/theme/device";
+import { useLoanStore } from "shared/hooks/useLoanStore";
 import styled from "styled-components";
 import { Footer } from "widgets/Footer";
 import { Header } from "widgets/Header";
 import { loanPageTabs } from "../consts/loanPageTabs";
-import { Prescoring } from "features/Prescoring";
-import { useRef } from "react";
-import { HowToGetCard } from "entities/HowToGetCard";
+import { LoanOffers } from "features/LoanOffer";
+import { ResultTab } from "./ResultTab";
 
 const LoanPageHolder = styled.div`
     display: flex;
@@ -44,13 +47,26 @@ export const LoanPage: React.FC = () => {
         }
     };
 
+    const { loanOffers, currentStep } = useLoanStore();
+
+    const getCurrentLoanTab = () => {
+        switch (currentStep) {
+            case 0: return <Prescoring ref={prescoringRef} />;
+            case 1:
+                return <LoanOffers offers={loanOffers || []} />;
+            default: <ResultTab />
+        }
+    };
+
+    const currentLoanTab = getCurrentLoanTab();
+
     return (
         <LoanPageHolder>
             <Header />
             <DigitalCreditCard scrollToApp={scrollToApp} />
             <Tabs tabs={loanPageTabs} />
             <HowToGetCard />
-            <Prescoring ref={prescoringRef} />
+            {currentLoanTab}
             <Footer />
         </LoanPageHolder>
     )

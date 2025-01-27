@@ -1,0 +1,1 @@
+export const REGEX_ONLY_DIGIT = /^\d?$/;

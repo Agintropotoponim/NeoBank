@@ -1,9 +1,10 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import axiosInstance from 'shared/api/axiosInstance';
 import { PrescoringForm } from '../type/PrescoringForm';
 
 export class ApplicationService {
     static async submitApplication(data: PrescoringForm | null): Promise<AxiosResponse> {
-        const response = await axios.post('http://localhost:8080/application', data);
+        const response = await axiosInstance.post('/application', data);
         return response;
     }
 }

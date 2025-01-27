@@ -1,12 +1,13 @@
+import { device } from "shared/config/theme/device";
 import styled from "styled-components";
 
-export const Select = styled.select<{ isError: boolean }>`
+export const Select = styled.select<{ isError: boolean; customWidth?: string }>`
     padding: 12px;
     border: ${({ isError, theme }) => (isError ? theme.colors.select.errorBorder : theme.colors.select.border)};
 
     box-sizing: border-box;
 
-    width: 297px;
+    width: ${({ customWidth }) => customWidth || "297px"};
     height: 40px;
 
     background: ${({ theme }) => theme.colors.select.background};
@@ -26,5 +27,13 @@ export const Select = styled.select<{ isError: boolean }>`
     &:focus {
         outline: none;
         border-color: ${({ theme }) => theme.colors.select.focusBorder};
+    }
+
+    @media ${device.desktopS} {
+        width: 297px;
+    }
+
+    @media ${device.laptopS} {
+        width: 250px;
     }
 `;

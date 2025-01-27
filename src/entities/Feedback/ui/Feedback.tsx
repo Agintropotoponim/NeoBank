@@ -3,6 +3,7 @@ import { CustomInput } from 'shared/ui/CustomInput';
 import { Loader } from 'shared/ui/Loader';
 import styled from 'styled-components';
 import { useSubscribeEmail } from '../hooks/useSubscribeEmail';
+import { emailPattern } from '../const/emailPattern';
 
 const FeedbackContainer = styled.section`
     display: flex;
@@ -64,7 +65,6 @@ export const Feedback: React.FC = () => {
     }, []);
 
     const handleSubmit = () => {
-        const emailPattern = /^[^@]{2,}@[a-zA-Z0-9]{2,}.*$/;
         if (emailPattern.test(value)) {
             mutate(value);
         } else {

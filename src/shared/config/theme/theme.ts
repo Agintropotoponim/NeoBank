@@ -114,7 +114,7 @@ export const theme = {
             border: "1px solid rgba(128, 128, 128, 0.2)",
             textPrimary: "#000000",
             focusBorder: "rgba(91, 53, 213, 1)",
-            
+
         },
         loader: {
             mainBorder: "2px solid rgba(128, 128, 128, 1)",
@@ -123,6 +123,71 @@ export const theme = {
         fieldContainer: {
             required: "rgba(255, 0, 0, 1)",
             errorMessage: "rgba(255, 86, 49, 1)"
+        },
+        notFoundPage: {
+            textPrimary: "rgba(28, 28, 30, 1)",
+            textSecondary: "rgba(0, 0, 0, 1)",
+            textTertiary: "rgba(75, 75, 75, 1)",
+
+        },
+        loanOffers: {
+            textPrimary: "rgba(28, 28, 30, 1)",
+            background: "#FFFFFF",
+            boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2)",
+        },
+        preliminaryDecision: {
+            border: "1px solid rgba(91, 53, 213, 1)",
+            textPrimary: "#1C1C1E",
+            textSecondary: "#4F5665",
+        },
+        scoring: {
+            textPrimary: "rgba(0, 0, 0, 1)",
+            background: "#FFFFFF",
+            boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2)",
+        },
+        applicationDecision: {
+            textPrimary: "#1C1C1E",
+            textSecondary: "#4F5665",
+        },
+        loanDocumentResult: {
+            textPrimary: "#1C1C1E",
+            textSecondary: "#4F5665",
+        },
+        paymentSchedule: {
+            textPrimary: "rgba(28, 28, 30, 1)",
+            textSecondary: "rgba(0, 0, 0, 1)",
+            textTertiary: "rgba(26, 32, 44, 1)",
+            textQuaternary: "rgba(74, 85, 104, 1)",
+            background: "#FFFFFF",
+            boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2)",
+            borderColor: "rgba(226, 232, 240, 1)"
+        },
+        denyButton: {
+            background: "rgba(217, 55, 55, 0.8)",
+            hover: "rgba(217, 45, 45, 0.8)",
+        },
+        modal: {
+            background: "rgba(0, 0, 0, 0.5)",
+            contentBackground: "rgba(255, 255, 255, 1)"
+        },
+        loanDocumentSign: {
+            textPrimary: "#1C1C1E",
+            textSecondary: "#4F5665",
+        },
+        signingDocument: {
+            background: "#FFFFFF",
+            boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2)",
+            textPrimary: "rgba(28, 28, 30, 1)",
+            textSecondary: "rgba(0, 0, 0, 1)",
+            textTertiary: "rgba(74, 85, 104, 1)",
+        },
+        loanCode: {
+            textPrimary: "rgba(28, 28, 30, 1)",
+            textSecondary: "rgba(79, 86, 101, 1)",
+            textTertiary: "rgba(0, 0, 0, 1)",
+            cellBorder: "0.5px solid #808080",
+            focusCellBorder: "1px solid rgba(49, 130, 206, 1)",
+            circleBorder: "1.5px solid rgba(128, 128, 128, 1)"
         }
     },
 };

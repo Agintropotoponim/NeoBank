@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ApplyButton = styled.button`
+export const ApplyButton = styled.button<{ disabled?: boolean }>`
     all: unset;
     box-sizing: border-box;
     width: 145px;
@@ -11,7 +11,8 @@ export const ApplyButton = styled.button`
     padding: 8px;
     box-shadow: none;
     gap: 8px;
-    background: ${({ theme }) => theme.colors.blueButton.background};
+    background: ${({ theme, disabled }) =>
+        disabled ? theme.colors.blueButton.disabled : theme.colors.blueButton.background};
     border-radius: 8px;
     font-family: 'Ubuntu';
     font-style: normal;
@@ -32,4 +33,7 @@ export const ApplyButton = styled.button`
     &:active {
         color: ${({ theme }) => theme.colors.blueButton.active};
     }
+
+    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+    
 `;

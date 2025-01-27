@@ -4,6 +4,9 @@ import { ReactComponent as CardImage } from '../assets/cardImage.svg';
 import { traits } from '../consts/traits';
 import { Tooltip } from 'shared/ui/Tooltip';
 import { ApplyButton } from 'shared/ui/ApplyButton';
+import { useLoanStore } from 'shared/hooks/useLoanStore';
+import { useNavigate } from 'react-router-dom';
+import { TraitsList } from './TraitsList';
 
 const Container = styled.div`
     background: ${({ theme }) => theme.colors.loanPage.creditCardLinearGradient};
@@ -106,74 +109,33 @@ const CardIllustration = styled(CardImage)`
     }
 `;
 
-const TraitKey = styled.p`
-    margin: 0;
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 112%;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.02em;
-    color: ${({ theme }) => theme.colors.loanPage.textSecondary};
-`;
-
-const TraitValue = styled.p`
-    margin: 0;
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 112%;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.02em;
-    color: ${({ theme }) => theme.colors.loanPage.textSecondary};
-`;
-
-const TraitList = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 613px;
-    height: 47px;
-
-    @media ${device.laptopS} {
-        width: fit-content;
-        height: auto;
-    }
-
-    @media ${device.tabletS} {
-        grid-template-columns: 1fr;
-    }
-`;
-
-const Trait = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    &:hover > div {
-        visibility: visible;
-        opacity: 1;
-    }
-`;
-
 interface IDigitalCreditCardProps {
     scrollToApp: () => void
 }
 
 export const DigitalCreditCard: React.FC<IDigitalCreditCardProps> = ({ scrollToApp }) => {
+    const { currentStep, applicationId } = useLoanStore();
+    const nav = useNavigate();
 
-    const traitsList = traits.map(({ key, value, tooltip }) => (
-        <Trait key={key}>
-            <TraitValue>{value}</TraitValue>
-            <TraitKey>{key}</TraitKey>
-            <Tooltip>{tooltip}</Tooltip>
-        </Trait>
-    ))
+    const continueConfig: Record<number, { fn?: () => void; link?: string }> = {
+        0: { fn: scrollToApp },
+        1: { fn: scrollToApp },
+        2: { link: `/loan/${applicationId}` },
+        3: { link: `/loan/${applicationId}/document` },
+        4: { link: `/loan/${applicationId}/document/sign` },
+        5: { link: `/loan/${applicationId}/code` },
+    };
+
+    const clickHandler = () => {
+        const action = continueConfig[currentStep];
+        if (action?.fn) {
+            action.fn();
+        } else if (action?.link) {
+            nav(action.link);
+        }
+    };
+
+    let label = currentStep < 2 ? "Apply for card" : "Continue";
 
     return (
         <Container>
@@ -183,12 +145,12 @@ export const DigitalCreditCard: React.FC<IDigitalCreditCardProps> = ({ scrollToA
                     <DescriptionItem>Our best credit card. Suitable for everyday spending and shopping.</DescriptionItem>
                     <DescriptionItem>Cash withdrawals and transfers without commission and interest.</DescriptionItem>
                 </Description>
-                <TraitList>{traitsList}</TraitList>
-                <ApplyButton onClick={scrollToApp}>Apply for card</ApplyButton>
+                <TraitsList />
+                <ApplyButton onClick={clickHandler}>{label}</ApplyButton>
             </LeftSection>
             <RightSection>
                 <CardIllustration />
             </RightSection>
         </Container>
-    )
+    );
 }

@@ -1,8 +1,9 @@
+import { device } from "shared/config/theme/device";
 import styled from "styled-components";
 
-export const Input = styled.input<{ isError: boolean }>`
+export const Input = styled.input<{ isError: boolean; customWidth?: string }>`
     box-sizing: border-box;
-    width: 297px;
+    width: ${({ customWidth }) => customWidth || "297px"};
     height: 40px;
     background: ${({ theme }) => theme.colors.input.background};
     border: ${({ isError, theme }) => (isError ? theme.colors.input.errorBorder : theme.colors.input.border)};
@@ -20,5 +21,13 @@ export const Input = styled.input<{ isError: boolean }>`
     &:focus {
         outline: none;
         border-color: ${({ theme }) => theme.colors.input.focusBorder};
+    }
+
+    @media ${device.desktopS} {
+        width: 297px;
+    }
+
+    @media ${device.laptopS} {
+        width: 250px;
     }
 `;

@@ -1,5 +1,4 @@
 import { NewsArticle } from "features/NewsSlider/model/NewsArticle";
-import { device } from "shared/config/theme/device";
 import styled from "styled-components";
 
 
