@@ -1,10 +1,11 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
+import axiosInstance from "shared/api/axiosInstance";
 import { ILoanOffer } from "shared/types/loanOfferType";
 
 export class LoanOfferService {
     
     static async applyLoan(offer: ILoanOffer): Promise<AxiosResponse> {
-        const response = await axios.post('http://localhost:8080/application/apply', offer);
+        const response = await axiosInstance.post('/application/apply', offer);
         return response;
     }
 }

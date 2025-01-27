@@ -13,6 +13,7 @@ export const useSubmitApplication = ({ data }: IUseSubmitApplicationOptions) => 
             const res = await ApplicationService.submitApplication(data);
             return res.data;
         },
+        
         enabled: !!data,
     });
 

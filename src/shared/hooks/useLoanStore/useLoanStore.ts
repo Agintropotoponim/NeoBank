@@ -1,19 +1,20 @@
 import { ILoanOffer } from 'shared/types/loanOfferType';
+import { LoanStep } from 'shared/types/loanStep';
 import { create } from 'zustand';
 
 interface LoanStore {
     loanOffers: ILoanOffer[] | null;
     applicationId: number | null;
-    currentStep: number;
+    currentStep: LoanStep;
     setLoanOffers: (offers: ILoanOffer[], id: number) => void;
-    setCurrentStep: (step: number) => void;
-    clearStore: () => void
+    setCurrentStep: (step: LoanStep) => void;
+    clearStore: () => void;
 }
 
 export const useLoanStore = create<LoanStore>((set) => ({
     loanOffers: JSON.parse(localStorage.getItem('loanOffers') || 'null') || [],
     applicationId: JSON.parse(localStorage.getItem('applicationId') || 'null'),
-    currentStep: JSON.parse(localStorage.getItem('currentStep') || '0'),
+    currentStep: JSON.parse(localStorage.getItem('currentStep') || '0') as LoanStep,
 
     setLoanOffers: (offers, id) => {
         localStorage.setItem('loanOffers', JSON.stringify(offers));
@@ -30,7 +31,6 @@ export const useLoanStore = create<LoanStore>((set) => ({
         localStorage.removeItem('loanOffers');
         localStorage.removeItem('applicationId');
         localStorage.removeItem('currentStep');
-        set({ loanOffers: null, applicationId: null, currentStep: 0 });
+        set({ loanOffers: null, applicationId: null, currentStep: LoanStep.PREVALIDATION });
     },
-
 }));

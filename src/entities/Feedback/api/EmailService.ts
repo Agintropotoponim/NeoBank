@@ -1,8 +1,9 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import axiosInstance from 'shared/api/axiosInstance';
 
 export class EmailService {
     static async sendEmail(email: string): Promise<AxiosResponse> {
-        const response = await axios.post('http://localhost:8080/email', { email });
+        const response = await axiosInstance.post('/email', { email });
         return response;
     }
 }

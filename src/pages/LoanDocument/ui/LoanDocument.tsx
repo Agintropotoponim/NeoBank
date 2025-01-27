@@ -6,6 +6,7 @@ import { ERoutes } from "shared/types/routesEnum";
 import styled from "styled-components";
 import { Footer } from "widgets/Footer";
 import { Header } from "widgets/Header";
+import { ResultTab } from "./ResultTab";
 
 const LoanDocumentPageHolder = styled.div`
     display: flex;
@@ -29,48 +30,6 @@ const LoanDocumentPageHolder = styled.div`
     }
 `;
 
-const LoanDocumentsResult = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    border-radius: 10px;
-    width: 100%;
-    height: 50vh;
-    box-sizing: border-box;
-    margin: 5px;
-    padding: 10px;
-`;
-
-const LoanDocumentsResultTitle = styled.h3`
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 112%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: ${({ theme }) => theme.colors.loanDocumentResult.textPrimary};
-    margin: 0;
-`;
-
-const LoanDocumentsResultDescription = styled.p`
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 112%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: ${({ theme }) => theme.colors.loanDocumentResult.textSecondary};
-    margin: 0;
-`;
-
 export const LoanDocument: React.FC = () => {
 
     const { currentStep, applicationId } = useLoanStore();
@@ -83,18 +42,8 @@ export const LoanDocument: React.FC = () => {
     const getCurrentLoanTab = () => {
         switch (currentStep) {
             case 3: return <PaymentSchedule />
-            case 4: return (
-                <LoanDocumentsResult>
-                    <LoanDocumentsResultTitle>
-                        Documents are formed
-                    </LoanDocumentsResultTitle>
-                    <LoanDocumentsResultDescription>
-                        Documents for signing will be sent to your email
-                    </LoanDocumentsResultDescription>
-                </LoanDocumentsResult>
-            )
-            default:
-                return <Navigate to={ERoutes.HOMEPAGE} />;
+            case 4: return <ResultTab />
+            default: return <Navigate to={ERoutes.HOMEPAGE} />;
         }
     };
 

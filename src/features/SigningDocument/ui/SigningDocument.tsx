@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { ReactComponent as File } from '../assets/file.svg';
 import { downloadName, fileUrl } from "../consts/fileUrl";
 import { useSignDocument } from "../hooks/useSignDocument";
+import { LoanStep } from "shared/types/loanStep";
+import { downloadFile } from "shared/lib/helpers/downloadFile";
 
 const Container = styled.div`
     width: 100%;
@@ -119,20 +121,13 @@ export const SigningDocument: React.FC = () => {
     const handleSend = () => {
         if (applicationId) {
             signDocument(applicationId);
-            setCurrentStep(5);
+            setCurrentStep(LoanStep.CODE_CONFIRMATION);
         }
     };
 
     const handleDownload = () => {
-        const link = document.createElement('a');
-        link.href = fileUrl;
-        link.download = downloadName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        downloadFile(fileUrl, downloadName);
     };
-
-    //if (!isSuccess) return <Loader />
 
     return (
         <Container>

@@ -12,9 +12,7 @@ export const useConsentDocuments = ({ applicationId }: IUseConsentDocumentsOptio
         mutationFn: async (applicationId) => {
             const res = await PaymentScheduleService.consentDocuments(applicationId);
             return res;
-        },
-        onSuccess: () => { },
-        onError: () => { },
+        }
     });
 
     return { consentDocuments, response, isSuccess, isError, error };

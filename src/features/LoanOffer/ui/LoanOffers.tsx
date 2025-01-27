@@ -7,6 +7,7 @@ import { ApplyButton } from 'shared/ui/ApplyButton';
 import { useApplyLoan } from '../hooks/useApplyLoan';
 import { useLoanStore } from 'shared/hooks/useLoanStore';
 import { device } from 'shared/config/theme/device';
+import { LoanStep } from 'shared/types/loanStep';
 
 interface ILoanOffersProps {
     offers: ILoanOffer[];
@@ -80,7 +81,7 @@ export const LoanOffers: React.FC<ILoanOffersProps> = ({ offers = [] }) => {
 
     const { setCurrentStep } = useLoanStore();
     const onSuccess = (): void => {
-        setCurrentStep(2);
+        setCurrentStep(LoanStep.SCORING);
     }
 
     const { applyLoan } = useApplyLoan(onSuccess);

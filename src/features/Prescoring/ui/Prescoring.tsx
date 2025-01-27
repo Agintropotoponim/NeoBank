@@ -12,6 +12,7 @@ import { formFields } from '../const/formFields';
 import { validationSchema } from '../const/validationSchema';
 import { useSubmitApplication } from '../hooks/useSubmitApplication';
 import { PrescoringForm } from '../type/PrescoringForm';
+import { LoanStep } from 'shared/types/loanStep';
 
 const FormContainer = styled.div`
     width: 100%;
@@ -163,9 +164,10 @@ export const Prescoring = forwardRef<HTMLDivElement>((props, ref) => {
     useEffect(() => {
         if (response) {
             setLoanOffers(response, response[0].applicationId);
-            setCurrentStep(1);
+            setCurrentStep(LoanStep.PREAPPROVAL);
         }
     }, [response, setLoanOffers, setCurrentStep]);
+
 
     return (
         <FormContainer ref={ref}>
@@ -183,6 +185,7 @@ export const Prescoring = forwardRef<HTMLDivElement>((props, ref) => {
                                 placeholder={"Enter amount"}
                                 required={true}
                                 type={"text"}
+                                mask={"digits"}
                                 isError={!!errors.amount}
                                 errorMessage={errors.amount?.message}
                                 touched={!!touchedFields.amount}
@@ -223,12 +226,11 @@ export const Prescoring = forwardRef<HTMLDivElement>((props, ref) => {
                                 placeholder={field.placeholder || ""}
                                 required={field.required}
                                 type={field.type}
+                                mask={field.mask}
                                 isError={!!errors[field.name]}
                                 errorMessage={errors[field.name]?.message}
                                 touched={!!touchedFields[field.name]}
-                                registerProps={register(field.name, {
-                                    onChange: field.name === 'amount' ? (e) => setAmount(Number(e.target.value) || null) : undefined,
-                                })}
+                                registerProps={register(field.name)}
                             />
                         )
                     ))}

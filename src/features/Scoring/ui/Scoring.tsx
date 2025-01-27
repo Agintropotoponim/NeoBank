@@ -12,6 +12,8 @@ import { validationSchema } from "../const/validationSchema";
 import { useSubmitScoring } from "../hooks/useSubmitScoring";
 import { FormPayload } from "../type/FormPayload";
 import { ScoringForm } from "../type/ScoringForm";
+import { LoanStep } from "shared/types/loanStep";
+import { mapFormDataToPayload } from "../lib/mapFormDataToPayload";
 
 const FormContainer = styled.div`
     width: 100%;
@@ -142,36 +144,21 @@ export const Scoring = () => {
 
     const { setCurrentStep, applicationId } = useLoanStore();
     const [formData, setFormData] = useState<FormPayload | null>(null);
-    const { response, isLoading, error } = useSubmitScoring({ data: formData, applicationId: applicationId || -1 });
+
+    const { mutate, isSuccess, error } = useSubmitScoring({
+        onSuccess: () => {
+            setCurrentStep(LoanStep.PAYMENT_SCHEDULE);
+        },
+        onError: () => {
+            console.error("Ошибка при отправке формы");
+        }
+    });
 
     const onSubmit = (data: ScoringForm) => {
-
-        const account = "11223344556677889900";
-
-        const payload: FormPayload = {
-            //applicationId: applicationId ? applicationId : 0,
-            gender: data.gender,
-            maritalStatus: data.maritalStatus,
-            dependentAmount: data.dependentAmount,
-            passportIssueDate: data.passportIssueDate,
-            passportIssueBranch: data.passportIssueBranch,
-            employment: {
-                employmentStatus: data.employmentStatus,
-                employerINN: data.employerINN,
-                salary: data.salary,
-                position: data.position,
-                workExperienceTotal: data.workExperienceTotal,
-                workExperienceCurrent: data.workExperienceCurrent,
-            },
-            account: account
-        };
-
-        setFormData(payload);
+        const payload = mapFormDataToPayload(data);
+        mutate({ data: payload, applicationId: applicationId || -1 });
     };
 
-    useEffect(() => {
-        if (response?.status == 200) setCurrentStep(3);
-    }, [response, setCurrentStep]);
 
     return (
         <FormContainer>
@@ -205,6 +192,7 @@ export const Scoring = () => {
                                     placeholder={field.placeholder || ""}
                                     required={field.required}
                                     type={field.type}
+                                    mask={field.mask}
                                     isError={!!errors[field.name]}
                                     errorMessage={errors[field.name]?.message}
                                     touched={!!touchedFields[field.name]}
@@ -241,6 +229,7 @@ export const Scoring = () => {
                                     placeholder={field.placeholder || ""}
                                     required={field.required}
                                     type={field.type}
+                                    mask={field.mask}
                                     isError={!!errors[field.name]}
                                     errorMessage={errors[field.name]?.message}
                                     touched={!!touchedFields[field.name]}
@@ -250,9 +239,8 @@ export const Scoring = () => {
                             )
                         ))}
                     </FieldsContainer>
-                    {isLoading && <Loader />}
-                    {error && <StepsBlock>Check your email. If something went wrong, contact us or check the information you entered and try again.</StepsBlock>}
 
+                    {error && <StepsBlock>Check your email. If something went wrong, contact us or check the information you entered and try again.</StepsBlock>}
 
                     <ButtonContainer>
                         <ApplyButton type="submit">Continue</ApplyButton>

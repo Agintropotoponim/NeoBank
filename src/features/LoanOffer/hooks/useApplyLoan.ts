@@ -11,9 +11,6 @@ export const useApplyLoan = (onSuccessCallback: () => void) => {
         },
         onSuccess: () => {
             onSuccessCallback();
-        },
-        onError: (error) => {
-            throw error;
         }
     });
 

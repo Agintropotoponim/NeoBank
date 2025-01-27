@@ -12,9 +12,7 @@ export const useDenyApplication = ({ applicationId }: IUseDenyApplicationOptions
         mutationFn: async (applicationId) => {
             const res = await PaymentScheduleService.denyApplication(applicationId);
             return res;
-        },
-        onSuccess: () => {},
-        onError: () => {},
+        }
     });
 
     return { denyApplication, response, isSuccess, isError, error };

@@ -22,10 +22,6 @@ export const validationSchema = yup.object({
             if (!value) return false;
             return new Date(value) <= new Date();
         }),
-    // passportIssueBranch: yup
-    //     .string()
-    //     .required("The series must be 6 digits")
-    //     .matches(/^\d{6}$/, "The series must be 6 digits"),
     passportIssueBranch: yup
         .string()
         .required("The series must be in the format XXX-XXX")
