@@ -52,7 +52,7 @@ const Tab = styled.button<{ isActive: boolean }>`
         font-size: 14px;
         padding: 8px 12px;
         border-left: ${({ isActive, theme }) =>
-        isActive ? `4px solid ${theme.colors.loanPage.tabsItem}` : 'none'};
+        isActive ? `4px solid ${theme.colors.loanPage.tabsLine}` : 'none'};
         border-bottom: none;
     }
 `;
