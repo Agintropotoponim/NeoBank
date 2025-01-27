@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { ApplyButton } from 'shared/ui/ApplyButton';
 import { Loader } from 'shared/ui/Loader';
 import styled from 'styled-components';
-
+import React from "react";
 import { InputFieldContainer, SelectFieldContainer } from 'entities/InputFieldContainer';
 import { device } from 'shared/config/theme/device';
 import { useLoanStore } from 'shared/hooks/useLoanStore';

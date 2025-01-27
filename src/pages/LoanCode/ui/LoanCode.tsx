@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { Footer } from "widgets/Footer";
 import { Header } from "widgets/Header";
 import { useLoanCode } from "../hooks/useLoanCode";
-import { useVerifyCode } from "../hooks/useVerifyCode";
 import { CodeConfirmationTab, ResultTab } from "./CodeConfirmationTabs";
 
 const Container = styled.div`
